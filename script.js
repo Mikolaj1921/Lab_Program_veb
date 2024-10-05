@@ -69,5 +69,3 @@ draggableElement.addEventListener('dragstart', (event) => {
     });
 });
 
-
-/////asads
