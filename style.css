@@ -1,23 +1,30 @@
-body {
-    background-color: aliceblue;
-  }
-  
-  .ex {
-    padding: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-  }
-  
-  #ex3_one, #ex3_two {
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
-    height: 50px;
-  }
-  
-  #ex3_element {
-    display: 'block';
-    cursor: pointer;
-    background-color: red;
-    width: 100px;
-  }
+.ex {
+  margin: 20px;
+}
+
+#ex1_button {
+  margin-bottom: 10px;
+}
+
+#ex3_one, #ex3_two {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #000;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#ex3_element {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  text-align: center;
+  line-height: 100px;
+  cursor: grab;
+}
+
+.drop-container {
+  display: inline-block;
+}
+
