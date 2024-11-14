@@ -1,49 +1,42 @@
-window.addEventListener('DOMContentLoaded', (event) => {
-    async function searchCountry() {
-        const capital = document.getElementById('capital-input').value.trim();
+async function fetchStations() {
+    const apiKey = "YOUR_NOAA_API_KEY";  // Zastąp własnym kluczem API NOAA
+    const url = "https://www.ncei.noaa.gov/cdo-web/api/v2/stations";
 
-        if (!capital) {
-            alert("Proszę wpisać nazwę stolicy.");
-            return;
-        }
-
-        try {
-            const response = await fetch(`https://restcountries.com/v3.1/capital/${capital}`);
-
-            if (!response.ok) {
-                throw new Error("Nie znaleziono kraju dla podanej stolicy.");
+    try {
+        const response = await fetch(url, {
+            headers: {
+                "token": apiKey
             }
+        });
 
-            const data = await response.json();
-            console.log(data); // Logowanie wyników dla testu
-            displayCountryInfo(data[0]);
-        } catch (error) {
-            alert(error.message);
+        if (!response.ok) {
+            throw new Error(`Błąd HTTP: ${response.status}`);
         }
+
+        const data = await response.json();
+        displayStations(data.results);
+    } catch (error) {
+        console.error("Błąd podczas pobierania danych stacji:", error);
     }
+}
 
-    function displayCountryInfo(country) {
-        const tableBody = document.querySelector('#country-info tbody');
-        tableBody.innerHTML = "";  // Czyścimy poprzednie wyniki
+function displayStations(stations) {
+    const tableBody = document.getElementById("stationsTableBody");
+    tableBody.innerHTML = "";  // Wyczyść istniejące dane
 
-        if (!country) {
-            alert("Brak danych dla podanej stolicy.");
-            return;
-        }
-
-        const row = document.createElement('tr');
+    stations.forEach(station => {
+        const row = document.createElement("tr");
 
         row.innerHTML = `
-      <td>${country.name?.common || "Brak danych"}</td>
-      <td>${country.capital ? country.capital[0] : "Brak danych"}</td>
-      <td>${country.population ? country.population.toLocaleString() : "Brak danych"}</td>
-      <td>${country.region || "Brak danych"}</td>
-      <td>${country.subregion || "Brak danych"}</td>
-    `;
+            <td>${station.id}</td>
+            <td>${station.name || "Brak nazwy"}</td>
+            <td>${station.state || "Brak"}</td>
+            <td>${station.latitude || "Brak"}</td>
+            <td>${station.longitude || "Brak"}</td>
+        `;
 
         tableBody.appendChild(row);
-    }
+    });
+}
 
-    // Ustawiamy `searchCountry` jako globalną funkcję
-    window.searchCountry = searchCountry;
-});
+
