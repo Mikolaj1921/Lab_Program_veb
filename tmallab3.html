@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyszukiwanie informacji o kraju</title>
+    <!-- Upewnij się, że ścieżka do styles.css jest poprawna -->
+    <link rel="stylesheet" href="lab3.css">
+</head>
+<body>
+<h1>Wyszukaj kraj według stolicy</h1>
+<input type="text" id="capital-input" placeholder="Wpisz nazwę stolicy">
+<button onclick="searchCountry()">Szukaj</button>
+
+<table id="country-info">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Capital</th>
+        <th>Population</th>
+        <th>Region</th>
+        <th>Subregion</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- Załaduj plik script.js na końcu, aby upewnić się, że HTML jest w pełni załadowany -->
+<script src="scriptlab3.js"></script>
+</body>
+</html>
