@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOAA Climate Data</title>
+    <link rel="stylesheet" href="cm3_2_2.css">
+</head>
+<body>
+
+<h1>Pobierz dane klimatyczne NOAA</h1>
+
+<!-- Formularz dla wyboru endpointa i parametrów -->
+<div class="form-container">
+    <label for="endpoint">Wybierz endpoint:</label>
+    <select id="endpoint">
+        <option value="/datasets">Datasets</option>
+        <option value="/datacategories">Data Categories</option>
+        <option value="/datatypes">Data Types</option>
+        <option value="/locationcategories">Location Categories</option>
+        <option value="/locations">Locations</option>
+        <option value="/data">Data</option>
+    </select>
+
+    <label for="search">Filtruj po nazwie:</label>
+    <input type="text" id="search" placeholder="Wpisz nazwę (opcjonalnie)">
+
+    <button id="fetchData">Pobierz dane</button>
+</div>
+
+<!-- Tabela wyników -->
+<table id="data-table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nazwa</th>
+        <th>Opis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Wyniki będą wyświetlane tutaj -->
+    </tbody>
+</table>
+
+<script src="cm3_2_2.js"></script>
+
+</body>
+</html>
